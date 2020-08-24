@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" media="screen" href="SecondTry-TicTac.css">
+
+
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-2 ads">ads</div>
+            <div class="col-1 space">some space</div>
+            <div class="col-4 table">
+                <div class="row">
+                    <div class="col-4 box" id="0,0" onclick="boxClick(0,0)"> </div>
+                    <div class="col-4 box" id="0,1" onclick="boxClick(0,1)"> </div>
+                    <div class="col-4 box" id="0,2" onclick="boxClick(0,2)"> </div>
+                </div>
+                <div class="row">
+                    <div class="col-4 box" id="1,0" onclick="boxClick(1,0)"> </div>
+                    <div class="col-4 box" id="1,1" onclick="boxClick(1,1)"> </div>
+                    <div class="col-4 box" id="1,2" onclick="boxClick(1,2)"> </div>
+                </div>
+                <div class="row">
+                    <div class="col-4 box" id="2,0" onclick="boxClick(2,0)"> </div>
+                    <div class="col-4 box" id="2,1" onclick="boxClick(2,1)"> </div>
+                    <div class="col-4 box" id="2,2" onclick="boxClick(2,2)"> </div>
+                </div>
+            </div>
+            <div class="col-1 space">some space</div>
+            <div class="col-2 panel">
+                PANEL-THINGY
+                <br>
+                Score:
+                <br>
+                Foo bar: stuff
+                <br>
+                Reset game and
+            </div>
+
+            <div class="col-sm-2 ads1">ads</div>
+        </div>
+    </div>
+
+
+    <script>
+        let board = [
+            [null, null, null],
+            [null, null, null],
+            [null, null, null],
+        ];
+
+        let currentPlayer = "x";
+
+        function boxClick(x, y) {
+            if (board[x][y] != null) {
+                return;
+            }
+
+            board[x][y] = currentPlayer;
+            render();
+
+            winner = getWinner();
+            if (winner != null) {
+                alert('You win!');
+            }
+
+            if (isATie()) {
+                alert('Its a tie');
+            }
+
+            if (currentPlayer == "x") {
+                currentPlayer = "o";
+            }
+            else {
+                currentPlayer = "x";
+            }
+        }
+
+        function render() {
+            for (let i = 0; i < 3; i++) {
+                for (let j = 0; j < 3; j++) {
+                    document.getElementById(`${i},${j}`).innerHTML = board[i][j];
+                }
+            }
+        }
+
+        function getWinner() {
+            let candidate;
+
+            for (let i = 0; i < 3; i++) {
+                // Check the i-th row
+                candidate = isWinningState(board[i][0], board[i][1], board[i][2]);
+                if (candidate !== null) {
+                    return candidate;
+                }
+
+                // Check the i-th column
+                candidate = isWinningState(board[0][i], board[1][i], board[2][i]);
+                if (candidate !== null) {
+                    return candidate;
+                }
+            }
+
+            // Check the diagonals
+            candidate = isWinningState(board[0][0], board[1][1], board[2][2]);
+            if (candidate !== null) {
+                return candidate;
+            }
+
+            candidate = isWinningState(board[2][0], board[1][1], board[0][2]);
+            if (candidate !== null) {
+                return candidate;
+            }
+
+            return null;
+        }
+
+        function isWinningState(a, b, c) {
+            if (a == null) {
+                return null;
+            }
+
+            if (a == b && a == c) {
+                return a;
+            }
+
+            return null;
+        }
+
+        function isATie() {
+            for (let i = 0; i < 3; i++) {
+                for (let j = 0; j < 3; j++) {
+                    if (board[i][j] == null) {
+                        return false;
+                    }
+                }
+            }
+
+            return true;
+        }
+        render();
+
+    </script>
+
+</body>
+
+</html>

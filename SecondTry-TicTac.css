@@ -1,0 +1,54 @@
+body{
+  display: grid;
+}
+
+.ads {
+  text-align: center;
+  background: #F4CC70;
+  float: left;
+  height: 300px;
+}
+
+.ads1 {
+  text-align: center;
+  background: #F4CC70;
+  float: right;
+  height: 300px;
+}
+.space{
+  border: 1px solid black;
+  background-color: lightblue;
+}
+
+.table {
+  text-align: center;
+  float: left;
+  height: auto;
+}
+
+
+.box {
+  border: solid black 1px;
+  font-size: 3em;
+  background: #6AB187;
+  text-align: center;
+  color: white;
+  height: 100px;
+}
+
+.box:hover {
+  background-color: thistle;
+}
+
+.panel {
+  border: 1px solid black;
+  background-color:yellow;
+  float: left;
+  font-size: medium;
+  height: 300px;
+}
+
+.space {
+  height: 300px;
+  background-color: lightblue;
+}

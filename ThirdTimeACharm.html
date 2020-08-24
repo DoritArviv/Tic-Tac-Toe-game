@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" media="screen" href="SecondTry-TicTac.css">
+
+
+</head>
+
+<body>
+    <div class="container-fluid">
+    <div class="row">
+        <div class="col-2 ads">ads</div>
+        <div class="col-1 space">some space</div>
+        <div class="col-5 table">
+            <div class="row">
+                <div class="col-4 box" id="0,0" onclick="C(0,0)"> 1 </div>
+                <div class="col-4 box" id="0,1" onclick="C(0,1)"> 2 </div>
+                <div class="col-4 box" id="0,2" onclick="C(0,2)"> 3 </div>
+            </div>
+            <div class="row">
+                <div class="col-4 box" id="1,0" onclick="C(1,0)"> 4 </div>
+                <div class="col-4 box" id="1,1" onclick="C(1,1)"> 5 </div>
+                <div class="col-4 box" id="1,2" onclick="C(1,2)"> 6 </div>
+            </div>
+            <div class="row">
+                <div class="col-4 box" id="2,0" onclick="C(2,0)"> 7 </div>
+                <div class="col-4 box" id="2,1" onclick="C(2,1)"> 8 </div>
+                <div class="col-4 box" id="2,2" onclick="C(2,2)"> 9 </div>
+            </div>
+        </div>
+        <div class="col-1 space">some space</div>
+        <div class="col-1 panel">
+            PANEL-THINGY
+            <br>
+            Score:
+            <br>
+            Foo bar: stuff
+            <br>
+            Reset game and
+    </div>
+
+        <div class="col-2 ads1">ads</div>
+    </div> 
+
+    </div>
+
+
+
+
+
+    <script>
+        let arr = [
+            [" ", " ", " "],
+            [" ", " ", " "],
+            [" ", " ", " "],
+        ];
+
+        let currentplayer = "x";
+
+        function C(x, y) {
+
+            if (arr[x][y] == " ") {
+                arr[x][y] = currentplayer;
+                document.getElementById(x.toString() + "," + y.toString()).innerHTML = currentplayer;
+                Win();
+                if (currentplayer == "x") {
+                    currentplayer = "o";
+                }
+                else {
+                    currentplayer = "x";
+                }
+            }
+
+        }
+
+        function Win() {
+            var box1 = document.getElementById('0,0').innerText.trim();
+            var box2 = document.getElementById('0,1').innerText.trim();
+            var box3 = document.getElementById('0,2').innerText.trim();
+            var box4 = document.getElementById('1,0').innerText.trim();
+            var box5 = document.getElementById('1,1').innerText.trim();
+            var box6 = document.getElementById('1,2').innerText.trim();
+            var box7 = document.getElementById('2,0').innerText.trim();
+            var box8 = document.getElementById('2,1').innerText.trim();
+            var box9 = document.getElementById('2,2').innerText.trim();
+
+            if (box1 == currentplayer && box1 == box2 && box1 == box3) {
+                setTimeout(() => {alert("You Win!")}, 1);
+            }
+
+            if (box4 == currentplayer && box4 == box5 && box1 == box6) {
+                setTimeout(() => {alert("You Win!")}, 1);
+            }
+
+            if (box7 == currentplayer && box7 == box8 && box7 == box9) {
+                setTimeout(() => {alert("You Win!")}, 1);
+            }
+
+            if (box1 == currentplayer && box1 == box4 && box1 == box7) {
+                setTimeout(() => {alert("You Win!")}, 1);
+            }
+
+            if (box2 == currentplayer && box2 == box5 && box2 == box8) {
+                setTimeout(() => {alert("You Win!")}, 1);
+            }
+
+            if (box3 == currentplayer && box3 == box6 && box3 == box9) {
+                setTimeout(() => {alert("You Win!")}, 1);
+            }
+
+            if (box1 == currentplayer && box1 == box5 && box1 == box9) {
+                setTimeout(() => {alert("You Win!")}, 1);
+            }
+
+            if (box3 == currentplayer && box3 == box5 && box3 == box7) {
+                setTimeout(() => {alert("You Win!")}, 1);
+            }
+
+
+        }
+
+
+    </script>
+
+</body>
+
+</html>
